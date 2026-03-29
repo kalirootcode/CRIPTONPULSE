@@ -16,8 +16,9 @@ class GameScreen extends ConsumerStatefulWidget {
 
 class _GameScreenState extends ConsumerState<GameScreen>
     with SingleTickerProviderStateMixin {
-  final TextEditingController _betController =
-      TextEditingController(text: '10');
+  final TextEditingController _betController = TextEditingController(
+    text: '10',
+  );
   late AnimationController _shakeController;
   Timer? _simulationTimer;
   final Random _random = Random();
@@ -45,13 +46,15 @@ class _GameScreenState extends ConsumerState<GameScreen>
     socketService.joinRoom('main_room');
 
     _simulationTimer?.cancel();
-    _simulationTimer =
-        Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    _simulationTimer = Timer.periodic(const Duration(milliseconds: 100), (
+      timer,
+    ) {
       final state = ref.read(socketServiceProvider);
       if (state.gameStatus == GameStatus.playing) {
         final newMultiplier = state.multiplier + (_random.nextDouble() * 0.05);
-        socketService
-            .updateMultiplier(double.parse(newMultiplier.toStringAsFixed(2)));
+        socketService.updateMultiplier(
+          double.parse(newMultiplier.toStringAsFixed(2)),
+        );
 
         if (_random.nextDouble() < 0.02) {
           _crashGame();
@@ -120,8 +123,9 @@ class _GameScreenState extends ConsumerState<GameScreen>
                 height: 10,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color:
-                      state.isConnected ? AppColors.primary : AppColors.error,
+                  color: state.isConnected
+                      ? AppColors.primary
+                      : AppColors.error,
                 ),
               ),
               const SizedBox(width: 8),
@@ -192,15 +196,15 @@ class _GameScreenState extends ConsumerState<GameScreen>
             .animate(target: state.gameStatus == GameStatus.playing ? 1 : 0)
             .shimmer(
               duration: const Duration(seconds: 2),
-              color: AppColors.primary.withOpacity(0.3),
+              color: AppColors.primary.withValues(alpha: 0.3),
             ),
         const SizedBox(height: 16),
         Text(
           state.gameStatus == GameStatus.waiting
               ? 'PLACE YOUR BET'
               : state.gameStatus == GameStatus.playing
-                  ? 'CASH OUT NOW!'
-                  : 'CRASHED!',
+              ? 'CASH OUT NOW!'
+              : 'CRASHED!',
           style: GoogleFonts.montserrat(
             fontSize: 16,
             fontWeight: FontWeight.w600,

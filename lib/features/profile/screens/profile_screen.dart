@@ -43,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
               end: Alignment.bottomRight,
               colors: [
                 AppColors.primary,
-                AppColors.primary.withOpacity(0.5),
+                AppColors.primary.withValues(alpha: 0.5),
               ],
             ),
           ),
@@ -68,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.surface,
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+            border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -113,32 +113,24 @@ class ProfileScreen extends StatelessWidget {
           _MenuItem(
             icon: Icons.person_outline,
             label: 'Edit Profile',
-            onTap: () => print('Edit Profile'),
+            onTap: () {},
           ),
           _divider(),
-          _MenuItem(
-            icon: Icons.security,
-            label: 'Security',
-            onTap: () => print('Security'),
-          ),
+          _MenuItem(icon: Icons.security, label: 'Security', onTap: () {}),
           _divider(),
           _MenuItem(
             icon: Icons.notifications_outlined,
             label: 'Notifications',
-            onTap: () => print('Notifications'),
+            onTap: () {},
           ),
           _divider(),
           _MenuItem(
             icon: Icons.help_outline,
             label: 'Help & Support',
-            onTap: () => print('Help'),
+            onTap: () {},
           ),
           _divider(),
-          _MenuItem(
-            icon: Icons.info_outline,
-            label: 'About',
-            onTap: () => print('About'),
-          ),
+          _MenuItem(icon: Icons.info_outline, label: 'About', onTap: () {}),
         ],
       ),
     );
@@ -148,7 +140,7 @@ class ProfileScreen extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: OutlinedButton.icon(
-        onPressed: () => print('Logout'),
+        onPressed: () {},
         icon: const Icon(Icons.logout, color: AppColors.error),
         label: Text(
           'Logout',

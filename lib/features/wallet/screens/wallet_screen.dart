@@ -56,12 +56,12 @@ class WalletScreen extends StatelessWidget {
           end: Alignment.bottomRight,
           colors: [
             AppColors.surface,
-            AppColors.surfaceLight.withOpacity(0.5),
+            AppColors.surfaceLight.withValues(alpha: 0.5),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: AppColors.primary.withOpacity(0.3),
+          color: AppColors.primary.withValues(alpha: 0.3),
           width: 1,
         ),
       ),
@@ -73,7 +73,7 @@ class WalletScreen extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: AppColors.primary.withOpacity(0.2),
+                  color: AppColors.primary.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(
@@ -122,7 +122,7 @@ class WalletScreen extends StatelessWidget {
             label: 'Deposit',
             icon: Icons.add_circle_outline,
             color: AppColors.primary,
-            onTap: () => print('Deposit tapped'),
+            onTap: () {},
           ),
         ),
         const SizedBox(width: 16),
@@ -131,7 +131,7 @@ class WalletScreen extends StatelessWidget {
             label: 'Withdraw',
             icon: Icons.remove_circle_outline,
             color: AppColors.surfaceLight,
-            onTap: () => print('Withdraw tapped'),
+            onTap: () {},
           ),
         ),
       ],
@@ -192,9 +192,9 @@ class _ActionButton extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(
-            color: color.withOpacity(0.15),
+            color: color.withValues(alpha: 0.15),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: color.withOpacity(0.3), width: 1),
+            border: Border.all(color: color.withValues(alpha: 0.3), width: 1),
           ),
           child: Column(
             children: [

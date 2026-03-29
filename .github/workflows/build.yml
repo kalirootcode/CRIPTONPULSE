@@ -43,3 +43,6 @@ jobs:
         with:
           name: apk-release
           path: build/app/outputs/flutter-apk/app-release.apk
+
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true

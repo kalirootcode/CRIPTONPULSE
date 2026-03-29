@@ -100,10 +100,9 @@ class HistoryScreen extends StatelessWidget {
   Widget _buildStatsRow(List<_HistoryItem> history) {
     final avgMultiplier =
         history.map((e) => e.multiplier).reduce((a, b) => a + b) /
-        history.length;
-    final maxMultiplier = history
-        .map((e) => e.multiplier)
-        .reduce((a, b) => a > b ? a : b);
+            history.length;
+    final maxMultiplier =
+        history.map((e) => e.multiplier).reduce((a, b) => a > b ? a : b);
 
     return Row(
       children: [
@@ -139,10 +138,7 @@ class HistoryScreen extends StatelessWidget {
         color: AppColors.surface,
         borderRadius: BorderRadius.circular(12),
         border: isLatest
-            ? Border.all(
-                color: AppColors.primary.withValues(alpha: 0.5),
-                width: 1,
-              )
+            ? Border.all(color: AppColors.primary.withOpacity(0.5), width: 1)
             : null,
       ),
       child: Row(

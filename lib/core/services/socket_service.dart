@@ -127,6 +127,23 @@ class SocketService extends StateNotifier<SocketServiceState> {
     state = state.copyWith(hasCashedOut: true);
   }
 
+  void updateMultiplier(double multiplier) {
+    state = state.copyWith(multiplier: multiplier);
+  }
+
+  void updateGameStatus(GameStatus status) {
+    state = state.copyWith(gameStatus: status);
+  }
+
+  void resetGame() {
+    state = state.copyWith(
+      gameStatus: GameStatus.waiting,
+      multiplier: 1.00,
+      hasCashedOut: false,
+      currentBet: null,
+    );
+  }
+
   void disconnect() {
     _socket?.disconnect();
     _socket?.dispose();
@@ -143,5 +160,5 @@ class SocketService extends StateNotifier<SocketServiceState> {
 
 final socketServiceProvider =
     StateNotifierProvider<SocketService, SocketServiceState>((ref) {
-      return SocketService();
-    });
+  return SocketService();
+});
